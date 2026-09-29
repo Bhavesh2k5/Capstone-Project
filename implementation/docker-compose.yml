@@ -1,0 +1,34 @@
+services:
+  demo:
+    build: .
+    image: vljepa-clip-cctv:latest
+    ports:
+      - "8501:8501"
+    environment:
+      CAPSTONE_DATA_ROOT: ${CAPSTONE_DATA_ROOT:-/data}
+      CAPSTONE_OUTPUT_ROOT: /app/results
+      CAPSTONE_DEVICE: ${CAPSTONE_DEVICE:-auto}
+      HF_HOME: /app/.cache/huggingface
+    volumes:
+      - ${CAPSTONE_DATA_ROOT_HOST:?set CAPSTONE_DATA_ROOT_HOST in .env}:/data:ro
+      - ./results:/app/results
+      - hf-cache:/app/.cache/huggingface
+    restart: unless-stopped
+
+  pipeline:
+    build: .
+    image: vljepa-clip-cctv:latest
+    entrypoint: ["python"]
+    environment:
+      CAPSTONE_DATA_ROOT: ${CAPSTONE_DATA_ROOT:-/data}
+      CAPSTONE_OUTPUT_ROOT: /app/results
+      CAPSTONE_DEVICE: ${CAPSTONE_DEVICE:-auto}
+      HF_HOME: /app/.cache/huggingface
+    volumes:
+      - ${CAPSTONE_DATA_ROOT_HOST:?set CAPSTONE_DATA_ROOT_HOST in .env}:/data:ro
+      - ./results:/app/results
+      - hf-cache:/app/.cache/huggingface
+    profiles: ["tools"]
+
+volumes:
+  hf-cache:

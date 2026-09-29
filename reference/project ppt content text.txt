@@ -1,0 +1,36 @@
+VL-JEPA vs. CLIP for CCTV Event Retrieval: Efficiency, Generalization, and Faithful Report Generation
+
+1)Problem Statement
+Industrial and surveillance CCTV systems generate large volumes of video, making it difficult to efficiently locate relevant events using conventional frame-based or manually indexed approaches. Vision-language representations such as CLIP enable semantic retrieval using natural-language queries, but their effectiveness can vary across surveillance environments, camera viewpoints, and event types. The recently proposed VL-JEPA provides an alternative vision-language representation based on joint-embedding prediction, but its suitability for CCTV event retrieval under resource-constrained conditions has not been sufficiently evaluated. Furthermore, when retrieved CCTV evidence is converted into natural-language incident reports using LLMs, the generated reports may contain unsupported or hallucinated information. Therefore, there is a need for a lightweight and reproducible framework to compare pretrained VL-JEPA and CLIP representations for CCTV event retrieval, evaluate their performance under limited domain shifts, and assess the factual faithfulness of generated surveillance reports.
+
+
+2)Motivation
+The increasing volume of CCTV footage makes manual monitoring and retrieval of relevant events inefficient and time-consuming. Existing vision-language models can support semantic video retrieval, but their computational efficiency and ability to generalize across different CCTV environments remain important open research questions. This project therefore investigates whether pretrained VL-JEPA representations can provide effective and efficient event retrieval compared with conventional CLIP representations using publicly available CCTV video datasets. Additionally, since LLM-generated surveillance reports may introduce unsupported or hallucinated information, the project evaluates the faithfulness of generated reports against the underlying video evidence. The study aims to contribute an evidence-based comparison of modern visual representations while exploring reliable and resource-efficient approaches for automated CCTV analysis.
+
+3)Objectives
+To develop a lightweight semantic CCTV event retrieval framework using pretrained vision-language representations.
+To compare pretrained VL-JEPA and CLIP representations for CCTV event retrieval using standard retrieval metrics.
+To evaluate the generalization of both representations across different cameras, viewpoints, or video sources.
+To analyze the computational requirements of the compared representations under resource-constrained conditions.
+To evaluate the factual faithfulness and hallucination rate of LLM-generated CCTV incident reports using retrieved visual evidence.
+
+4)Hypothesis
+h1:Main hypothesis
+Pretrained VL-JEPA representations will achieve comparable or better semantic retrieval performance than CLIP representations for CCTV event retrieval.
+h2:Generalization
+VL-JEPA representations will maintain better retrieval performance than CLIP when tested on CCTV videos from different cameras or visual environments.
+h3:Report faithfulness
+Grounding LLM-generated surveillance reports in structured CCTV evidence will reduce unsupported or hallucinated claims compared with unconstrained report generation.
+
+5)Problem Survey
+The rapid growth of CCTV video creates a need for automated methods that can efficiently retrieve relevant events from large volumes of surveillance footage. Conventional approaches often depend on predefined event categories or task-specific models, while CLIP-based representations provide flexible natural-language retrieval but were originally developed primarily for image-text alignment rather than dedicated video understanding. Recent vision-language approaches such as VL-JEPA extend joint embedding learning to video and support text-to-video retrieval without requiring autoregressive text generation, reporting strong results compared with CLIP and other representation models on multiple video benchmarks. However, the effectiveness, computational practicality, and cross-camera generalization of such representations for CCTV-style event retrieval remain insufficiently established, particularly under limited computational resources. In addition, converting retrieved surveillance evidence into natural-language reports introduces a separate reliability problem because generated reports may contain unsupported or hallucinated details, motivating evaluation of report faithfulness against the underlying visual evidence.
+
+
+6)Subject knowledge
+Computer Vision & Video Processing – Basics of video frames, feature extraction, and CCTV event understanding.
+CLIP & Vision-Language Models – Understanding image/video-text embeddings and semantic retrieval.
+VL-JEPA & Representation Learning – Basic understanding of pretrained VL-JEPA and how it represents video and language in an embedding space.
+Semantic Video Retrieval – Embeddings, cosine similarity, FAISS, and metrics such as Recall@K.
+LLMs & Hallucination – Generating incident reports from retrieved evidence and identifying unsupported claims.
+Experimental Evaluation – Comparing CLIP and VL-JEPA using retrieval accuracy, generalization, and computational cost.
+
